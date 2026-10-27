@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Calculator</title>
+    <link rel="stylesheet" href="stud_cal.css">
+</head>
+<body>
+
+    <div class="calculator-card">
+        <h1>Student Grade Calculator</h1>
+        <p class="subtitle">Enter the student's grades below.</p>
+
+        <form id="gradeForm" novalidate>
+            <div class="form-group">
+                <label for="studentName">Student Name</label>
+                <input type="text" id="studentName"
+                       placeholder="Enter student name">
+            </div>
+
+            <div class="form-group">
+                <label for="prelim">Prelim Grade</label>
+                <input type="number" id="prelim"
+                       placeholder="Enter prelim grade"
+                       min="0" max="100" step="any">
+            </div>
+
+            <div class="form-group">
+                <label for="midterm">Midterm Grade</label>
+                <input type="number" id="midterm"
+                       placeholder="Enter midterm grade"
+                       min="0" max="100" step="any">
+            </div>
+
+            <div class="form-group">
+                <label for="finalGrade">Final Grade</label>
+                <input type="number" id="finalGrade"
+                       placeholder="Enter final grade"
+                       min="0" max="100" step="any">
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="calculate-btn">
+                    Calculate
+                </button>
+
+                <button type="button" id="clearBtn" class="clear-btn">
+                    Clear
+                </button>
+            </div>
+        </form>
+
+        <p id="errorMessage" class="error-message"
+           role="alert" hidden></p>
+
+        <!-- Results are displayed here after calculation -->
+        <section id="results" class="results" hidden>
+            <h2>Student Results</h2>
+
+            <div class="result-row">
+                <span>Student Name</span>
+                <span id="resultName" class="result-value"></span>
+            </div>
+
+            <div class="result-row">
+                <span>Prelim Grade</span>
+                <span id="resultPrelim" class="result-value"></span>
+            </div>
+
+            <div class="result-row">
+                <span>Midterm Grade</span>
+                <span id="resultMidterm" class="result-value"></span>
+            </div>
+
+            <div class="result-row">
+                <span>Final Grade</span>
+                <span id="resultFinal" class="result-value"></span>
+            </div>
+
+            <div class="result-row average-row">
+                <span>Average Grade</span>
+                <span id="resultAverage" class="result-value"></span>
+            </div>
+
+            <div class="remarks-box">
+                <span>Remarks</span>
+                <span id="resultRemarks"></span>
+            </div>
+        </section>
+
+        <p class="footer-text">Student Grade Calculator System</p>
+    </div>
+
+    <script src="stud_cal.js"></script>
+</body>
+</html>
