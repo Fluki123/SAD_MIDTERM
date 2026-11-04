@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
 
     // Get the form and buttons
@@ -71,8 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // Display remarks and set the appropriate color
         const resultRemarks = document.getElementById("resultRemarks");
         resultRemarks.textContent = remarks;
-        resultRemarks.style.color =
-            remarks === "Passed" ? "#4ade80" : "#f87171";
+        resultRemarks.className =
+            remarks === "Passed" ? "remarks-pass" : "remarks-fail";
 
         // SHOW the results
         results.hidden = false;
@@ -105,7 +104,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const resultRemarks = document.getElementById("resultRemarks");
         resultRemarks.textContent = "";
-        resultRemarks.style.color = "";
+        resultRemarks.className = "";
+    });
+
+    // ---------- Light / dark theme toggle ----------
+    const themeToggle = document.getElementById("themeToggle");
+
+    // Sync the button's accessible label with the current theme
+    function updateToggleLabel() {
+        const isDark = document.body.classList.contains("dark-mode");
+        themeToggle.setAttribute("aria-pressed", String(isDark));
+        themeToggle.setAttribute(
+            "aria-label",
+            isDark ? "Switch to light mode" : "Switch to dark mode"
+        );
+    }
+
+    // The saved theme was already applied by the inline script in the HTML
+    updateToggleLabel();
+
+    themeToggle.addEventListener("click", function () {
+        const isDark = document.body.classList.toggle("dark-mode");
+
+        // Save the preference so it persists after a refresh
+        try {
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+        } catch (e) {
+            // localStorage unavailable (e.g. private mode); ignore
+        }
+
+        updateToggleLabel();
     });
 
 });
